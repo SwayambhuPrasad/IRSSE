@@ -1,4 +1,3 @@
-import NavigationBar from "@/components/NavigationBar";
 
 
 // 1. import `NextUIProvider` component
@@ -7,6 +6,6 @@ import NavigationBar from "@/components/NavigationBar";
 export default function App() {
   // 2. Wrap NextUIProvider at the root of your app
   return (
-     <NavigationBar/>
+     <></>
   );
 }

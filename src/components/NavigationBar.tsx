@@ -16,6 +16,7 @@ export default function NavigationBar() {
           <Image src="/logo.jpeg"
             width={60}
             height={60}
+            className="border rounded-full mx-2"
             alt="Picture of the author" />
           <p className="font-bold text-inherit">IRSSE</p>
         </NavbarBrand>
@@ -26,12 +27,12 @@ export default function NavigationBar() {
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link href="#" aria-current="page">
+            <Link href="/about" aria-current="page">
               About
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Dropdown backdrop="blur">
+            <Dropdown >
               <DropdownTrigger>
                 <Link color="foreground" href="#">
                   For IRSSE
@@ -39,10 +40,15 @@ export default function NavigationBar() {
 
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions">
-                <DropdownItem
+                <DropdownItem>
+                  <Button
                   href="https://nextui.org/docs/components/link"
-                  as={Link}>
-                  Profile of IRSSE Officers</DropdownItem>
+                  as={Link}
+                  variant="light"
+                  >
+                     Profile of IRSSE Officers
+                  </Button>
+                 </DropdownItem>
                 <DropdownItem
                   href="https://nextui.org/docs/components/link"
                   as={Link}>
