@@ -10,8 +10,8 @@ import React from "react";
 
 export interface DropdownProps {
   name: string;
-  dropdownItems: string[];
-  linkToPath?: string[];
+  dropdownItems: Array<string | DropdownProps>;
+  linkToPath: Array<string | undefined>;
 }
 
 export const DropDown: React.FC<DropdownProps> = ({
@@ -22,20 +22,22 @@ export const DropDown: React.FC<DropdownProps> = ({
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Link color="foreground" href="#">
+        <Link color="foreground" href="#" className="flex items-center gap-2">
           {name}
         </Link>
       </DropdownTrigger>
-      <DropdownMenu aria-label="Static Actions">
+      <DropdownMenu aria-label="Custom item styles">
         {dropdownItems.map((item, index) => (
           <DropdownItem key={index}>
-            <Button
-              href={linkToPath ? linkToPath[index] : undefined}
-              as={linkToPath ? Link : DropdownItem}
-              variant="light"
-            >
-              {item}
-            </Button>
+            {typeof item === "string" ? (
+              <Button href={linkToPath[index]} as={Link} variant="light">
+                {item}
+              </Button>
+            ) : (
+              <Button variant="light">
+                <DropDown {...item} />
+              </Button>
+            )}
           </DropdownItem>
         ))}
       </DropdownMenu>

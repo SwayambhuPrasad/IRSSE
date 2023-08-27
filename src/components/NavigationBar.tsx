@@ -41,11 +41,7 @@ export default function NavigationBar() {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <DropDown
-              name={ForIRSSE.name}
-              dropdownItems={ForIRSSE.dropdownItems}
-              linkToPath={ForIRSSE.linkToPath}
-            />
+            <DropDown {...ForIRSSE} />
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="#">
