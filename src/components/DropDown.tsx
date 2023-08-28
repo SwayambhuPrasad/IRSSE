@@ -1,12 +1,13 @@
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-} from "@nextui-org/react";
+} from "@nextui-org/dropdown";
 import Link from "next/link";
 import React from "react";
+import { ChevronDownIcon } from "./ChevronDownIcon";
+import { Button, ButtonGroup } from "@nextui-org/react";
 
 export interface DropdownProps {
   name: string;
@@ -20,7 +21,7 @@ export const DropDown: React.FC<DropdownProps> = ({
   linkToPath,
 }) => {
   return (
-    <Dropdown>
+    <Dropdown closeOnSelect={false}>
       <DropdownTrigger>
         <Link color="foreground" href="#" className="flex items-center gap-2">
           {name}
@@ -30,17 +31,63 @@ export const DropDown: React.FC<DropdownProps> = ({
         {dropdownItems.map((item, index) => (
           <DropdownItem key={index}>
             {typeof item === "string" ? (
-              <Button href={linkToPath[index]} as={Link} variant="light">
+              <Button
+                href={linkToPath[index]}
+                as={Link}
+                variant="light"
+                className="w-full flex justify-start hover:translate-y-1"
+              >
                 {item}
               </Button>
             ) : (
-              <Button variant="light">
-                <DropDown {...item} />
-              </Button>
+              <ChildDropDown {...item} />
             )}
           </DropdownItem>
         ))}
       </DropdownMenu>
     </Dropdown>
+  );
+};
+
+export const ChildDropDown: React.FC<DropdownProps> = ({
+  name,
+  dropdownItems,
+  linkToPath,
+}) => {
+  return (
+    <ButtonGroup variant="flat">
+      <Button>{name}</Button>
+      <Dropdown placement="bottom-end">
+        <DropdownTrigger>
+          <Button isIconOnly>
+            <ChevronDownIcon />
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu
+          disallowEmptySelection
+          aria-label="Merge options"
+          className="max-w-[auto]"
+        >
+          {dropdownItems.map((item, index) => (
+            <DropdownItem key={index}>
+              {typeof item === "string" ? (
+                <Button
+                  href={linkToPath[index]}
+                  as={Link}
+                  variant="light"
+                  className="w-full flex justify-start hover:translate-y-1"
+                >
+                  {item}
+                </Button>
+              ) : (
+                <Button variant="light">
+                  <ChildDropDown {...item} />
+                </Button>
+              )}
+            </DropdownItem>
+          ))}
+        </DropdownMenu>
+      </Dropdown>
+    </ButtonGroup>
   );
 };
