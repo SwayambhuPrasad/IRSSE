@@ -14,6 +14,8 @@ import {
 import Image from "next/image";
 import { DropDown } from "./DropDown";
 import { ForIRSSE } from "@/constants/Dropdowns/ForIRSSE";
+import { Resources } from "@/constants/Dropdowns/Resources";
+import { Articles } from "@/constants/Dropdowns/Articles";
 
 export default function NavigationBar() {
   return (
@@ -31,7 +33,7 @@ export default function NavigationBar() {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="/">
               Home
             </Link>
           </NavbarItem>
@@ -44,32 +46,28 @@ export default function NavigationBar() {
             <DropDown {...ForIRSSE} />
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Resources
-            </Link>
+            <DropDown {...Resources} />
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Articles
-            </Link>
+            <DropDown {...Articles} />
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="/gallery">
               Gallery
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" href="/contact-us">
               Contact Us
             </Link>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
-            <Link href="#">Login</Link>
+            <Link href="/login">Login</Link>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
+            <Button as={Link} color="primary" href="/signup" variant="flat">
               Sign Up
             </Button>
           </NavbarItem>

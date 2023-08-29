@@ -21,7 +21,7 @@ export const DropDown: React.FC<DropdownProps> = ({
   linkToPath,
 }) => {
   return (
-    <Dropdown closeOnSelect={false}>
+    <Dropdown closeOnSelect={false} placement="bottom-end">
       <DropdownTrigger>
         <Link color="foreground" href="#" className="flex items-center gap-2">
           {name}
@@ -57,7 +57,7 @@ export const ChildDropDown: React.FC<DropdownProps> = ({
   return (
     <ButtonGroup variant="flat">
       <Button>{name}</Button>
-      <Dropdown placement="bottom-end">
+      <Dropdown placement="right-start" closeOnSelect={false}>
         <DropdownTrigger>
           <Button isIconOnly>
             <ChevronDownIcon />
