@@ -8,7 +8,7 @@ export default function SwitchMode() {
     <Switch
       defaultSelected
       size="sm"
-      color="secondary"
+      color="default"
       thumbIcon={({ isSelected, className }) =>
         isSelected ? (
           <SunIcon className={className} />
