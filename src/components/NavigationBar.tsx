@@ -1,10 +1,9 @@
 "use client";
+import { Articles } from "@/constants/Dropdowns/Articles";
+import { ForIRSSE } from "@/constants/Dropdowns/ForIRSSE";
+import { Resources } from "@/constants/Dropdowns/Resources";
 import {
   Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
   Link,
   Navbar,
   NavbarBrand,
@@ -13,31 +12,32 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import { DropDown } from "./DropDown";
-import { ForIRSSE } from "@/constants/Dropdowns/ForIRSSE";
-import { Resources } from "@/constants/Dropdowns/Resources";
-import { Articles } from "@/constants/Dropdowns/Articles";
+import SwitchMode from "./SwitchMode";
+import React from "react";
 
 export default function NavigationBar() {
   return (
     <>
       <Navbar shouldHideOnScroll className="mt-4">
         <NavbarBrand>
-          <Image
-            src="/logo.jpeg"
-            width={60}
-            height={60}
-            className="border rounded-full mx-2"
-            alt="Picture of the author"
-          />
+          <Link color="foreground" href="/">
+            <Image
+              src="/logo.jpeg"
+              width={60}
+              height={60}
+              className="border rounded-full mx-2"
+              alt="Picture of the author"
+            />
+          </Link>
           <p className="font-bold text-inherit">IRSSE</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
-          <NavbarItem>
+          <NavbarItem isActive>
             <Link color="foreground" href="/">
               Home
             </Link>
           </NavbarItem>
-          <NavbarItem isActive>
+          <NavbarItem>
             <Link href="/about" aria-current="page">
               About
             </Link>
@@ -61,6 +61,7 @@ export default function NavigationBar() {
               Contact Us
             </Link>
           </NavbarItem>
+          <SwitchMode />
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">

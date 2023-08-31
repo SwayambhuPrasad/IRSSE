@@ -21,7 +21,11 @@ export const DropDown: React.FC<DropdownProps> = ({
   linkToPath,
 }) => {
   return (
-    <Dropdown closeOnSelect={false} placement="bottom-end">
+    <Dropdown
+      closeOnSelect={false}
+      shouldCloseOnBlur={false}
+      placement="bottom-end"
+    >
       <DropdownTrigger>
         <Link color="foreground" href="#" className="flex items-center gap-2">
           {name}
@@ -80,9 +84,7 @@ export const ChildDropDown: React.FC<DropdownProps> = ({
                   {item}
                 </Button>
               ) : (
-                <Button variant="light">
-                  <ChildDropDown {...item} />
-                </Button>
+                <ChildDropDown {...item} />
               )}
             </DropdownItem>
           ))}
