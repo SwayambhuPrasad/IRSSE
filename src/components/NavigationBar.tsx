@@ -31,7 +31,7 @@ export default function NavigationBar() {
           </Link>
           <p className="font-bold text-inherit">IRSSE</p>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarContent className="hidden lg:flex gap-4" justify="center">
           <NavbarItem isActive>
             <Link color="foreground" href="/">
               Home
