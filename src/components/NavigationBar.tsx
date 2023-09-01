@@ -4,12 +4,12 @@ import { ForIRSSE } from "@/constants/Dropdowns/ForIRSSE";
 import { Resources } from "@/constants/Dropdowns/Resources";
 import {
   Button,
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/react";
+import Link from "next/link";
 import Image from "next/image";
 import { DropDown } from "./DropDown";
 import SwitchMode from "./SwitchMode";
