@@ -15,7 +15,7 @@ export default function Login() {
   const [selected, setSelected] = useState("login");
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col h-screen justify-center items-center">
       <Card className="max-w-full w-[340px] h-[400px]">
         <CardBody className="overflow-hidden">
           <Tabs

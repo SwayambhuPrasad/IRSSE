@@ -112,7 +112,7 @@ export default function NavigationBar() {
                     ? "danger"
                     : "foreground"
                 }
-                className="w-full backdrop-blur-sm"
+                className="w-full"
                 // size="lg"
               >
                 {item.dropdownItems.length === 0 ? (
