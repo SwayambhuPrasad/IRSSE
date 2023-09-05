@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
 import { Switch } from "@nextui-org/react";
-import { Dispatches } from "@/store/Store";
+import { useTheme } from "next-themes";
+import React from "react";
 
 export default function SwitchMode() {
-  const dispatches = useContext(Dispatches);
+  const { theme, setTheme } = useTheme();
   return (
     <Switch
       defaultSelected
@@ -17,9 +17,7 @@ export default function SwitchMode() {
         )
       }
       onValueChange={(value) => {
-        value
-          ? dispatches({ type: "switchTheme", payload: "light" })
-          : dispatches({ type: "switchTheme", payload: "dark" });
+        value ? setTheme("light") : setTheme("dark");
       }}
     ></Switch>
   );

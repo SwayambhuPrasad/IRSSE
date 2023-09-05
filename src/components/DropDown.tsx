@@ -22,7 +22,7 @@ export const DropDown: React.FC<DropdownProps> = ({
   return (
     <Dropdown
       closeOnSelect={false}
-      shouldCloseOnBlur={false}
+      // shouldCloseOnBlur={false}
       placement="bottom-end"
     >
       <DropdownTrigger>

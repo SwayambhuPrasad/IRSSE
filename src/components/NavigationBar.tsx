@@ -4,33 +4,61 @@ import { ForIRSSE } from "@/constants/Dropdowns/ForIRSSE";
 import { Resources } from "@/constants/Dropdowns/Resources";
 import {
   Button,
+  Link as LinkUI,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
 } from "@nextui-org/react";
-import Link from "next/link";
 import Image from "next/image";
-import { DropDown } from "./DropDown";
+import Link from "next/link";
+import React, { useState } from "react";
+import { DropDown, DropdownProps } from "./DropDown";
 import SwitchMode from "./SwitchMode";
-import React from "react";
 
+const menuItems: Array<DropdownProps> = [
+  { name: "About", dropdownItems: [], linkToPath: ["/about"] },
+  ForIRSSE,
+  Resources,
+  Articles,
+  { name: "Gallery", dropdownItems: [], linkToPath: ["/gallery"] },
+  { name: "Contact Us", dropdownItems: [], linkToPath: ["/contact-us"] },
+  { name: "Login", dropdownItems: [], linkToPath: ["/login"] },
+];
 export default function NavigationBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-      <Navbar shouldHideOnScroll className="mt-4">
-        <NavbarBrand>
-          <Link color="foreground" href="/">
-            <Image
-              src="/logo.jpeg"
-              width={60}
-              height={60}
-              className="border rounded-full mx-2"
-              alt="Picture of the author"
-            />
-          </Link>
-          <p className="font-bold text-inherit">IRSSE</p>
-        </NavbarBrand>
+      <Navbar
+        shouldHideOnScroll
+        className="mt-4"
+        onMenuOpenChange={setIsMenuOpen}
+        isBlurred
+      >
+        <NavbarContent>
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="lg:hidden"
+          />
+          <NavbarBrand>
+            <Link color="foreground" href="/">
+              <Image
+                src="/logo.jpeg"
+                width={60}
+                height={60}
+                className="border rounded-full mx-2 w-13 h-13 max-sm:w-10 max-sm:h-10"
+                alt="Picture of the author"
+              />
+            </Link>
+            <p className="font-bold text-inherit">IRSSE</p>
+            <div className="lg:hidden mx-4">
+              <SwitchMode />
+            </div>
+          </NavbarBrand>
+        </NavbarContent>
         <NavbarContent className="hidden lg:flex gap-4" justify="center">
           <NavbarItem isActive>
             <Link color="foreground" href="/">
@@ -73,6 +101,29 @@ export default function NavigationBar() {
             </Button>
           </NavbarItem>
         </NavbarContent>
+        <NavbarMenu>
+          {menuItems.map((item, index) => (
+            <NavbarMenuItem key={`${item}-${index}`}>
+              <LinkUI
+                color={
+                  index === 2
+                    ? "primary"
+                    : index === menuItems.length - 1
+                    ? "danger"
+                    : "foreground"
+                }
+                className="w-full backdrop-blur-sm"
+                // size="lg"
+              >
+                {item.dropdownItems.length === 0 ? (
+                  <Link href="#">{item.name}</Link>
+                ) : (
+                  <DropDown {...item} />
+                )}
+              </LinkUI>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
       </Navbar>
     </>
   );

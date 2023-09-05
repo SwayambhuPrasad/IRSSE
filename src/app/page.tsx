@@ -1,11 +1,9 @@
+"use client";
 
-
-// 1. import `NextUIProvider` component
-
+import { Store } from "@/store/Store";
+import { useContext } from "react";
 
 export default function App() {
-  // 2. Wrap NextUIProvider at the root of your app
-  return (
-     <></>
-  );
+  const store = useContext(Store);
+  return <div className={`w-screen h-screen`}></div>;
 }
