@@ -10,9 +10,11 @@ import {
   CardBody,
   CardHeader,
 } from "@nextui-org/react";
+import { usePathname } from "next/navigation";
 
 export default function Login() {
-  const [selected, setSelected] = useState("login");
+  const pathname = usePathname().slice(1);
+  const [selected, setSelected] = useState(pathname);
 
   return (
     <div className="flex flex-col h-screen justify-center items-center">
