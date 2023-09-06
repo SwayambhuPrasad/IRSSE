@@ -4,11 +4,13 @@ import React from "react";
 
 export default function SwitchMode() {
   const { theme, setTheme } = useTheme();
+  console.log(theme);
   return (
     <Switch
       defaultSelected
       size="sm"
       color="default"
+      defaultValue={theme}
       thumbIcon={({ isSelected, className }) =>
         isSelected ? (
           <SunIcon className={className} />

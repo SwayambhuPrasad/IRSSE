@@ -18,6 +18,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { DropDown, DropdownProps } from "./DropDown";
 import SwitchMode from "./SwitchMode";
+import { Url } from "url";
 
 const menuItems: Array<DropdownProps> = [
   { name: "About", dropdownItems: [], linkToPath: ["/about"] },
@@ -116,7 +117,7 @@ export default function NavigationBar() {
                 // size="lg"
               >
                 {item.dropdownItems.length === 0 ? (
-                  <Link href="#">{item.name}</Link>
+                  <Link href={item.linkToPath[0] as unknown as Url}>{item.name}</Link>
                 ) : (
                   <DropDown {...item} />
                 )}

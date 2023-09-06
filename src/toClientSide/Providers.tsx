@@ -17,7 +17,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       <Store.Provider value={store}>
         <Dispatches.Provider value={dispatch}>
           <NextUIProvider>
-            <NextThemesProvider attribute="class" defaultTheme="dark">
+            <NextThemesProvider attribute="class" defaultTheme="light">
               {children}
             </NextThemesProvider>
           </NextUIProvider>
