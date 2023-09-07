@@ -1,16 +1,17 @@
 "use client";
-import { useState } from "react";
 import {
-  Tabs,
-  Tab,
-  Input,
-  Link,
   Button,
   Card,
   CardBody,
-  CardHeader,
+  Input,
+  Link,
+  Tab,
+  Tabs,
 } from "@nextui-org/react";
+import { signIn } from "next-auth/react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function Login() {
   const pathname = usePathname().slice(1);
@@ -52,6 +53,20 @@ export default function Login() {
                     Login
                   </Button>
                 </div>
+                <Button
+                  onClick={() => signIn("google")}
+                  className="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+                >
+                  <Image
+                    width={24}
+                    height={24}
+                    className="w-6 h-6"
+                    src="https://www.svgrepo.com/show/475656/google-color.svg"
+                    loading="lazy"
+                    alt="google logo"
+                  />
+                  <span>Login with Google</span>
+                </Button>
               </form>
             </Tab>
             <Tab key="sign-up" title="Sign up">
