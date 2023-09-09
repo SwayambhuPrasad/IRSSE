@@ -1,8 +1,11 @@
 "use client";
 
-import { Store } from "@/store/Store";
-import { useContext } from "react";
+import { useSession } from "next-auth/react";
 
 export default function App() {
-  return <div className={`w-screen h-screen`}></div>;
+  const { data, status } = useSession();
+  console.log(data, status);
+  return (
+    <div className={`w-screen h-screen`}>{!!data ? data.expires : "hii"}</div>
+  );
 }

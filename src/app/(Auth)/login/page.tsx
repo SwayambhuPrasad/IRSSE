@@ -16,6 +16,7 @@ import { useState } from "react";
 export default function Login() {
   const pathname = usePathname().slice(1);
   const [selected, setSelected] = useState(pathname);
+  const [creds, setCreds] = useState({ email: "", password: "" });
 
   return (
     <div className="flex flex-col h-screen justify-center items-center">
@@ -35,12 +36,26 @@ export default function Login() {
                   label="Email"
                   placeholder="Enter your email"
                   type="email"
+                  onValueChange={(v: string) =>
+                    setCreds((c) => {
+                      const d = { ...c };
+                      d.email = v;
+                      return d;
+                    })
+                  }
                 />
                 <Input
                   isRequired
                   label="Password"
                   placeholder="Enter your password"
                   type="password"
+                  onValueChange={(v: string) =>
+                    setCreds((c) => {
+                      const d = { ...c };
+                      d.password = v;
+                      return d;
+                    })
+                  }
                 />
                 <p className="text-center text-small">
                   Need to create an account?{" "}
@@ -49,14 +64,23 @@ export default function Login() {
                   </Link>
                 </p>
                 <div className="flex gap-2 justify-end">
-                  <Button fullWidth color="primary">
+                  <Button
+                    onClick={async () =>
+                      console.log(
+                        await signIn("credentials", {
+                          email: creds.email,
+                          password: creds.password,
+                          callbackUrl: "http://localhost:3000",
+                        })
+                      )
+                    }
+                    fullWidth
+                    color="primary"
+                  >
                     Login
                   </Button>
                 </div>
-                <Button
-                  onClick={() => signIn("google")}
-                  className="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
-                >
+                <Button className="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
                   <Image
                     width={24}
                     height={24}

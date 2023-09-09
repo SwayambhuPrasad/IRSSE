@@ -5,8 +5,15 @@ import { actions, rootReducer } from "@/store/reducers";
 import { NextUIProvider } from "@nextui-org/react";
 import { Reducer, useReducer } from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { SessionProvider } from "next-auth/react";
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session?: any;
+}) {
   const [store, dispatch] = useReducer<Reducer<state, actions>>(
     rootReducer,
     initialState
@@ -18,7 +25,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         <Dispatches.Provider value={dispatch}>
           <NextUIProvider>
             <NextThemesProvider attribute="class" defaultTheme="light">
-              {children}
+              <SessionProvider session={session}>{children}</SessionProvider>
             </NextThemesProvider>
           </NextUIProvider>
         </Dispatches.Provider>
