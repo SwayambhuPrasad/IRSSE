@@ -24,7 +24,7 @@ export default function Providers({
       <Store.Provider value={store}>
         <Dispatches.Provider value={dispatch}>
           <NextUIProvider>
-            <NextThemesProvider attribute="class" defaultTheme="light">
+            <NextThemesProvider attribute="class" defaultTheme="dark">
               <SessionProvider session={session}>{children}</SessionProvider>
             </NextThemesProvider>
           </NextUIProvider>

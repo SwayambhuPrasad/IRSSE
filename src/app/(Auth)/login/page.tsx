@@ -65,14 +65,12 @@ export default function Login() {
                 </p>
                 <div className="flex gap-2 justify-end">
                   <Button
-                    onClick={async () =>
-                      console.log(
-                        await signIn("credentials", {
-                          email: creds.email,
-                          password: creds.password,
-                          callbackUrl: "http://localhost:3000",
-                        })
-                      )
+                    onClick={() =>
+                      signIn("credentials", {
+                        email: creds.email,
+                        password: creds.password,
+                        callbackUrl: "http://localhost:3000",
+                      })
                     }
                     fullWidth
                     color="primary"

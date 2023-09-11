@@ -15,10 +15,12 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { Profiler, useState } from "react";
 import { DropDown, DropdownProps } from "./DropDown";
 import SwitchMode from "./SwitchMode";
 import { Url } from "url";
+import { useSession } from "next-auth/react";
+import Profile from "./Profile";
 
 const menuItems: Array<DropdownProps> = [
   { name: "About", dropdownItems: [], linkToPath: ["/about"] },
@@ -31,6 +33,7 @@ const menuItems: Array<DropdownProps> = [
 ];
 export default function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data, status } = useSession();
   return (
     <>
       <Navbar
@@ -92,16 +95,22 @@ export default function NavigationBar() {
           </NavbarItem>
           <SwitchMode />
         </NavbarContent>
-        <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <Link href="/login">Login</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Button as={Link} color="primary" href="/sign-up" variant="flat">
-              Sign Up
-            </Button>
-          </NavbarItem>
-        </NavbarContent>
+        {data?.user ? (
+          <NavbarContent justify="end">
+            <Profile session={data} />
+          </NavbarContent>
+        ) : (
+          <NavbarContent justify="end">
+            <NavbarItem className="hidden lg:flex">
+              <Link href="/login">Login</Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Button as={Link} color="primary" href="/sign-up" variant="flat">
+                Sign Up
+              </Button>
+            </NavbarItem>
+          </NavbarContent>
+        )}
         <NavbarMenu>
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
@@ -117,7 +126,9 @@ export default function NavigationBar() {
                 // size="lg"
               >
                 {item.dropdownItems.length === 0 ? (
-                  <Link href={item.linkToPath[0] as unknown as Url}>{item.name}</Link>
+                  <Link href={item.linkToPath[0] as unknown as Url}>
+                    {item.name}
+                  </Link>
                 ) : (
                   <DropDown {...item} />
                 )}

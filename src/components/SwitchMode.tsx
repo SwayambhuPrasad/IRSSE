@@ -1,10 +1,12 @@
 import { Switch } from "@nextui-org/react";
 import { useTheme } from "next-themes";
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function SwitchMode() {
   const { theme, setTheme } = useTheme();
-  console.log(theme);
+  useEffect(() => {
+    setTheme("dark");
+  }, []);
   return (
     <Switch
       defaultSelected
@@ -13,13 +15,13 @@ export default function SwitchMode() {
       defaultValue={theme}
       thumbIcon={({ isSelected, className }) =>
         isSelected ? (
-          <SunIcon className={className} />
-        ) : (
           <MoonIcon className={className} />
+        ) : (
+          <SunIcon className={className} />
         )
       }
       onValueChange={(value) => {
-        value ? setTheme("light") : setTheme("dark");
+        value ? setTheme("dark") : setTheme("light");
       }}
     ></Switch>
   );
