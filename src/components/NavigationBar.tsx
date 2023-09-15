@@ -4,34 +4,66 @@ import { ForIRSSE } from "@/constants/Dropdowns/ForIRSSE";
 import { Resources } from "@/constants/Dropdowns/Resources";
 import {
   Button,
-  Link,
+  Link as LinkUI,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
 } from "@nextui-org/react";
 import Image from "next/image";
-import { DropDown } from "./DropDown";
+import Link from "next/link";
+import React, { Profiler, useState } from "react";
+import { DropDown, DropdownProps } from "./DropDown";
 import SwitchMode from "./SwitchMode";
-import React from "react";
+import { Url } from "url";
+import { useSession } from "next-auth/react";
+import Profile from "./Profile";
 
+const menuItems: Array<DropdownProps> = [
+  { name: "About", dropdownItems: [], linkToPath: ["/about"] },
+  ForIRSSE,
+  Resources,
+  Articles,
+  { name: "Gallery", dropdownItems: [], linkToPath: ["/gallery"] },
+  { name: "Contact Us", dropdownItems: [], linkToPath: ["/contact-us"] },
+  { name: "Login", dropdownItems: [], linkToPath: ["/login"] },
+];
 export default function NavigationBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data, status } = useSession();
   return (
     <>
-      <Navbar shouldHideOnScroll className="mt-4">
-        <NavbarBrand>
-          <Link color="foreground" href="/">
-            <Image
-              src="/logo.jpeg"
-              width={60}
-              height={60}
-              className="border rounded-full mx-2"
-              alt="Picture of the author"
-            />
-          </Link>
-          <p className="font-bold text-inherit">IRSSE</p>
-        </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <Navbar
+        shouldHideOnScroll
+        className="mt-4"
+        onMenuOpenChange={setIsMenuOpen}
+        isBlurred
+      >
+        <NavbarContent>
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="lg:hidden"
+          />
+          <NavbarBrand>
+            <Link color="foreground" href="/">
+              <Image
+                src="/logo.jpeg"
+                width={60}
+                height={60}
+                className="border rounded-full mx-2 w-13 h-13 max-sm:w-10 max-sm:h-10"
+                alt="Picture of the author"
+              />
+            </Link>
+            <p className="font-bold text-inherit">IRSSE</p>
+            <div className="lg:hidden mx-4">
+              <SwitchMode />
+            </div>
+          </NavbarBrand>
+        </NavbarContent>
+        <NavbarContent className="hidden lg:flex gap-4" justify="center">
           <NavbarItem isActive>
             <Link color="foreground" href="/">
               Home
@@ -63,16 +95,47 @@ export default function NavigationBar() {
           </NavbarItem>
           <SwitchMode />
         </NavbarContent>
-        <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <Link href="/login">Login</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Button as={Link} color="primary" href="/signup" variant="flat">
-              Sign Up
-            </Button>
-          </NavbarItem>
-        </NavbarContent>
+        {data?.user ? (
+          <NavbarContent justify="end">
+            <Profile session={data} />
+          </NavbarContent>
+        ) : (
+          <NavbarContent justify="end">
+            <NavbarItem className="hidden lg:flex">
+              <Link href="/login">Login</Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Button as={Link} color="primary" href="/sign-up" variant="flat">
+                Sign Up
+              </Button>
+            </NavbarItem>
+          </NavbarContent>
+        )}
+        <NavbarMenu>
+          {menuItems.map((item, index) => (
+            <NavbarMenuItem key={`${item}-${index}`}>
+              <LinkUI
+                color={
+                  index === 2
+                    ? "primary"
+                    : index === menuItems.length - 1
+                    ? "danger"
+                    : "foreground"
+                }
+                className="w-full"
+                // size="lg"
+              >
+                {item.dropdownItems.length === 0 ? (
+                  <Link href={item.linkToPath[0] as unknown as Url}>
+                    {item.name}
+                  </Link>
+                ) : (
+                  <DropDown {...item} />
+                )}
+              </LinkUI>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
       </Navbar>
     </>
   );

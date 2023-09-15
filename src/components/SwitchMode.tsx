@@ -1,25 +1,27 @@
-import React, { useContext } from "react";
 import { Switch } from "@nextui-org/react";
-import { Dispatches } from "@/store/Store";
+import { useTheme } from "next-themes";
+import React, { useEffect } from "react";
 
 export default function SwitchMode() {
-  const dispatches = useContext(Dispatches);
+  const { theme, setTheme } = useTheme();
+  useEffect(() => {
+    setTheme("dark");
+  }, []);
   return (
     <Switch
       defaultSelected
       size="sm"
       color="default"
+      defaultValue={theme}
       thumbIcon={({ isSelected, className }) =>
         isSelected ? (
-          <SunIcon className={className} />
-        ) : (
           <MoonIcon className={className} />
+        ) : (
+          <SunIcon className={className} />
         )
       }
       onValueChange={(value) => {
-        value
-          ? dispatches({ type: "switchTheme", payload: "light" })
-          : dispatches({ type: "switchTheme", payload: "dark" });
+        value ? setTheme("dark") : setTheme("light");
       }}
     ></Switch>
   );
