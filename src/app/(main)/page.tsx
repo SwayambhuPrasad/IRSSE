@@ -55,7 +55,7 @@ export default function App() {
     </div>
 
     <div className="hidden absolute w-[70%] h-[80%] bg-purple-800 left-0 right-0 mx-auto sm:flex justify-center items-center">
-      center
+      <img className="h-full w-full" src="/aboutPage.jpg" alt="" />
     </div>
       
    
