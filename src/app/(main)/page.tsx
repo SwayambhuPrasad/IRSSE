@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Button, Card, CardBody, CardFooter, CardHeader, Pagination } from "@nextui-org/react";
 import { useState } from "react";
 import PaginationComp from "@/components/PaginarionComp";
+import 'animate.css';
 
 export default function App() {
   const [page,setPage]=useState(1)
@@ -14,23 +15,27 @@ export default function App() {
   console.log(data, status);
   return (
     <>
-    <div className="w-full h-screen ">
+    <div className="w-full h-screen sm:py-8 ">
       
       <Card className=" container m-auto h-full py-4 sm:flex sm:flex-row border-none bg-transparent shadow-none "
       
       >
       <CardHeader className="pb-0  pt-2 h-1/2  px-4 sm:p-6 flex-col  items-center justify-center mb-2 sm:w-2/5 sm:h-full">
         
-        <h4 className="font-bold text-5xl sm:text-7xl mb-3">Indian Railway Service of Signal Engineers</h4>
+        <h4 className="font-bold text-5xl md:text-5xl lg:text-7xl mb-3">Indian
+        
+         Railway 
+         Service 
+         of Signal Engineers</h4>
         <p className="text-tiny uppercase font-bold sm:text-xl sm:mt-5">{HeroImages[page].title}</p>
         <small className="text-default-500 sm:text-lg ">{HeroImages[page].desc}</small>
       </CardHeader>
-      <CardBody className="h-1/2 overflow-hidden  py-2 sm:w-3/5 sm:h-full  ">
+      <CardBody className="h-1/2 overflow-hidden  py-2 sm:w-3/5 sm:p-0 sm:h-full  realtive">
       <Card 
       
       isFooterBlurred
       radius="lg"
-      className="h-full w-full border-none flex flex-row items-center gap-5 px-4 bg-gray-500 "
+      className="h-full w-full border-none flex flex-row items-center gap-5 sm:p-0 bg-gray-500 "
       style={{
         backgroundImage:`url("${HeroImages[page].url}")`,
         backgroundPosition:"center",
@@ -38,40 +43,32 @@ export default function App() {
     
       }}
       
-    >      
-      <Card 
-      isFooterBlurred
-      radius="lg"
-      className=" hidden sm:block h-3/4 w-5/6 border-none "     
+    >     
+    <div className="sm:hidden w-full h-full bg-red-500">
+      </div> 
+    <div className="hidden absolute w-[60%] h-[70%] bg-blue-500 -left-[20%] sm:flex justify-center items-center">
+      left
+    </div>
+
+    <div className="hidden absolute w-[60%] h-[70%] bg-blue-500 sm:-right-[20%] sm:flex justify-center items-center ">
+      hello
+    </div>
+
+    <div className="hidden absolute w-[70%] h-[80%] bg-purple-800 left-0 right-0 mx-auto sm:flex justify-center items-center">
+      center
+    </div>
       
-    > 
+   
+    {
+      HeroImages.map((item)=>(
+        <div className="absolute left-0 right-0 mx-auto bottom-3 w-2 h-2 rounded-full bg-black cursor-pointer" ></div>
+      ))
+    }
     
-    <Image
-      src={HeroImages[page].url}
-      fill={true}
-      alt="Picture of the author"   />
-    
-      
-    </Card>
-    <Card 
-      
-      isFooterBlurred
-      radius="lg"
-      className=" hidden sm:block h-1/5 w-1/6 border-none "
-      
-      
-      
-    > 
-    <img className="w-full h-full object-cover" src={HeroImages[page-1].url} alt="" />
-    
-      
-    </Card>
-    
-    
-      
-    </Card>
     <Pagination
+    className="hidden absolute left-0 right-0 bottom-3 mx-auto"
       total={8}
+      size="sm"
       page={page}
       onChange={(page)=>{
         
@@ -88,6 +85,9 @@ export default function App() {
           "bg-gradient-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold",
       }}
     />
+      
+    </Card>
+    
     
       </CardBody>
     </Card>

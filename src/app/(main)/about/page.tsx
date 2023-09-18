@@ -4,7 +4,9 @@ export default function about() {
   // 2. Wrap NextUIProvider at the root of your app
   return (
     <>
-    <h1>hello from about page</h1>
+    <div className="container m-auto">
+        
+    </div>
     </>
   );
 }
