@@ -7,7 +7,7 @@ const page = () => {
       <div className="container w-full h-full m-auto lg:px-14 p-5   flex flex-col items-center justify-center px-5 ">
         {/*DG NAIR Visit to IRISET*/}
         <div>
-          <div className="bg-gray-300 p-5 lg:text-lg lg:font-medium">
+          <div className="bg-gray-300 dark:bg-gray-800 p-5 lg:text-lg lg:font-medium">
             DG NAIR Visit to IRISET
           </div>
           <div className="w-full max-w-5xl py-5 -b-10 mx-auto gap-5 columns-2 space-y-5">
@@ -18,7 +18,7 @@ const page = () => {
 
         {/*Events*/}
         <div>
-          <div className="bg-gray-300 p-5 lg:text-lg lg:font-medium">
+          <div className="bg-gray-300 dark:bg-gray-800 p-5 lg:text-lg lg:font-medium">
             Events
           </div>
           <div className="w-full max-w-5xl py-5 -b-10 mx-auto gap-5 columns-3 space-y-5">
@@ -34,7 +34,7 @@ const page = () => {
         </div>
         {/*S & T Installation*/}
         <div>
-          <div className="bg-gray-300 p-5 lg:text-lg lg:font-medium">
+          <div className="bg-gray-300 dark:bg-gray-800 p-5 lg:text-lg lg:font-medium">
             S & T Installations
           </div>
           <div className="w-full max-w-5xl py-5 -b-10 mx-auto gap-5 columns-3 space-y-5">
