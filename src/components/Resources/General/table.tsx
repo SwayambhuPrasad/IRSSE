@@ -49,7 +49,7 @@ export default function GeneralTabel() {
       <TableHeader>
         <TableColumn key="serialNumber">SN</TableColumn>
         <TableColumn key="subject">SUBJECT</TableColumn>
-        <TableColumn key="status">DETAILS</TableColumn>
+        <TableColumn key="details">DETAILS</TableColumn>
       </TableHeader>
       <TableBody items={items}>
         {(item) => (
