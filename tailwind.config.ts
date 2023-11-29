@@ -9,6 +9,11 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    colors:{
+      'sixty':'#A0AFA0',
+      'thirty':'#BCA79D',
+      'ten':'#FC6B05'
+    },
     extend: {
       
     },

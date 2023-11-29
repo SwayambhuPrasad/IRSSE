@@ -10,9 +10,17 @@ const page = () => {
           <div className="bg-gray-300 dark:bg-gray-800 p-5 lg:text-lg lg:font-medium">
             DG NAIR Visit to IRISET
           </div>
-          <div className="w-full max-w-5xl py-5 -b-10 mx-auto gap-5 columns-2 space-y-5">
-            <img src="/dgNair/1.jpg" alt="" />
-            <img src="/dgNair/2.jpg" alt="" />
+          <div className="w-full max-w-5xl py-5 -b-10 mx-auto grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/dgNair/1.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/dgNair/2.jpg"
+              alt=""
+            />
           </div>
         </div>
 
@@ -21,15 +29,47 @@ const page = () => {
           <div className="bg-gray-300 dark:bg-gray-800 p-5 lg:text-lg lg:font-medium">
             Events
           </div>
-          <div className="w-full max-w-5xl py-5 -b-10 mx-auto gap-5 columns-3 space-y-5">
-            <img src="/Events/1.jpg" alt="" />
-            <img src="/Events/2.jpg" alt="" />
-            <img src="/Events/3.jpg" alt="" />
-            <img src="/Events/4.jpg" alt="" />
-            <img src="/Events/5.jpg" alt="" />
-            <img src="/Events/6.jpg" alt="" />
-            <img src="/Events/7.jpg" alt="" />
-            <img src="/Events/8.jpg" alt="" />
+          <div className="w-full max-w-5xl py-5 -b-10 mx-auto  grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Events/1.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Events/2.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Events/3.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Events/4.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Events/5.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Events/6.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Events/7.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm "
+              src="/Events/8.jpg"
+              alt=""
+            />
           </div>
         </div>
         {/*S & T Installation*/}
@@ -37,16 +77,52 @@ const page = () => {
           <div className="bg-gray-300 dark:bg-gray-800 p-5 lg:text-lg lg:font-medium">
             S & T Installations
           </div>
-          <div className="w-full max-w-5xl py-5 -b-10 mx-auto gap-5 columns-3 space-y-5">
-            <img src="/Installation/1.jpg" alt="" />
-            <img src="/Installation/2.jpg" alt="" />
-            <img src="/Installation/3.jpg" alt="" />
-            <img src="/Installation/4.jpg" alt="" />
-            <img src="/Installation/5.jpg" alt="" />
-            <img src="/Installation/6.jpg" alt="" />
-            <img src="/Installation/7.jpg" alt="" />
-            <img src="/Installation/8.jpg" alt="" />
-            <img src="/Installation/9.jpg" alt="" />
+          <div className="w-full max-w-5xl py-5 -b-10 mx-auto grid  gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/1.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/2.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/3.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/4.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/6.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/6.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/7.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/8.jpg"
+              alt=""
+            />
+            <img
+              className=" w-full h-full object-cover rounded-sm"
+              src="/Installation/9.jpg"
+              alt=""
+            />
           </div>
         </div>
       </div>

@@ -37,6 +37,9 @@ export default function about() {
           punctual operation of trains, as well as enhancing the line capacity
           of the Indian Railways system.
         </div>
+        <div className="hidden conatainer w-full h-full mx-auto flex items-center justify-center">
+          <div className="w-[40%] h-[150px] p-5 border-r-large bg-ten">1</div>
+        </div>
         {/*History of about page*/}
         <div className="container mt-4">
           <h1 className=" font-semibold text-xl md:text-2xl md:font-semibold lg:text-3xl lg:font-bold my-3">

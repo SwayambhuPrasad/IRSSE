@@ -21,6 +21,7 @@ import SwitchMode from "./SwitchMode";
 import { Url } from "url";
 import { useSession } from "next-auth/react";
 import Profile from "./Profile";
+import { usePathname } from "next/navigation";
 
 const menuItems: Array<DropdownProps> = [
   { name: "About", dropdownItems: [], linkToPath: ["/about"] },
@@ -34,6 +35,7 @@ const menuItems: Array<DropdownProps> = [
 export default function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data, status } = useSession();
+  const pathname = usePathname();
   return (
     <>
       <Navbar
